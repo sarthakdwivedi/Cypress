@@ -7,6 +7,7 @@ describe('test the todo actions',()=> {
         todoPage.navigate()
         todoPage.validateHeader('todos')
         todoPage.validateNumberOfTodosShown(0)
+      
         
         //cy.get('ul').should('not.have.descendants','li')
     })
@@ -18,7 +19,7 @@ describe('test the todo actions',()=> {
         todoPage.validateTodoText(0, newText)
         todoPage.validateTodoCompletedState(0,false)
         todoPage.validateTaskState(0, false)
-        todoPage.validateTextooter(1)
+        todoPage.validateTextOnFooter(1)
     })
 
 
@@ -40,6 +41,7 @@ describe('test the todo actions',()=> {
             todoPage.completeTodo(0)
             todoPage.validateTodoCompletedState(0, true)
             todoPage.validateTaskState(0, true)
+            todoPage.validateTextOnFooter(0)
         })
 
     })
@@ -50,19 +52,23 @@ describe('test the todo actions',()=> {
             todoPage.addTodo('My task {Enter}')
             todoPage.addTodo('My Second task {Enter}')
             todoPage.addTodo('My Third task {Enter}')
+            //todoPage.validateTextOnFooter(3)
             todoPage.completeTodo(1)
+            todoPage.validateTextOnFooter(2)
         })
 
         it('is able to filter only active task', () => {
 
             todoPage.showOnlyActiveTodos()
             todoPage.validateNumberOfTodosShown(2)
+            todoPage.validateTextOnFooter(2)
         })
 
         it('is able to filter only completed task', () => {
 
             todoPage.showOnlyCompletedTodos()
             todoPage.validateNumberOfTodosShown(1)
+            todoPage.validateTextOnFooter(2)
         })
 
         it('is able to filter only All task', () => {
