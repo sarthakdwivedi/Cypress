@@ -26,7 +26,7 @@ export class TodoPage {
 
     //function to validate number on footer
     validateTextOnFooter(expectedNumber) {
-        cy.get('.footer span').should('have.text', expectedNumber == 0 ? 'No items left' : expectedNumber > 1 ?`{expectedNumber} items left`:'1 item left')
+        cy.get('.footer span').should('have.text', expectedNumber == 0 ? 'No items left' : expectedNumber > 1 ?`${expectedNumber} items left`:'1 item left')
     }
 
     //function to filter only completed task
